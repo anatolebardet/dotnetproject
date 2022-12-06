@@ -105,3 +105,6 @@ C:\Users\TP-Bluray\Documents\repos\VideoTheque\VideoTheque\obj\Debug\net6.0\refi
 C:\Users\TP-Bluray\Documents\repos\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.pdb
 C:\Users\TP-Bluray\Documents\repos\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.genruntimeconfig.cache
 C:\Users\TP-Bluray\Documents\repos\VideoTheque\VideoTheque\obj\Debug\net6.0\ref\VideoTheque.dll
+C:\Users\johnf\Travail Scolaire\.NET\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.dll
+C:\Users\johnf\Travail Scolaire\.NET\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\refint\VideoTheque.dll
+C:\Users\johnf\Travail Scolaire\.NET\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.pdb
