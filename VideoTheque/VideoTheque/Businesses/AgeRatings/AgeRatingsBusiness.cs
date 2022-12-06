@@ -13,7 +13,7 @@ namespace VideoTheque.Businesses.AgeRatings
             _ageRatingDao = ageRatingDao;
         }
 
-        public Task<List<ageRatingDto>> GetAgeRatings() => _ageRatingDao.GetAgeRatings();
+        public Task<List<AgeRatingDto>> GetAgeRatings() => _ageRatingDao.GetAgeRatings();
 
         public AgeRatingDto GetAgeRating(int id)
         {

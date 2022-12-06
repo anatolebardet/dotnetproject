@@ -105,6 +105,19 @@ C:\Users\TP-Bluray\Documents\repos\VideoTheque\VideoTheque\obj\Debug\net6.0\refi
 C:\Users\TP-Bluray\Documents\repos\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.pdb
 C:\Users\TP-Bluray\Documents\repos\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.genruntimeconfig.cache
 C:\Users\TP-Bluray\Documents\repos\VideoTheque\VideoTheque\obj\Debug\net6.0\ref\VideoTheque.dll
+<<<<<<< HEAD
 C:\Users\johnf\Travail Scolaire\.NET\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.dll
 C:\Users\johnf\Travail Scolaire\.NET\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\refint\VideoTheque.dll
 C:\Users\johnf\Travail Scolaire\.NET\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.pdb
+=======
+C:\Users\TP-Bluray\Source\Repos\anatolebardet\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.csproj.AssemblyReference.cache
+C:\Users\TP-Bluray\Source\Repos\anatolebardet\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TP-Bluray\Source\Repos\anatolebardet\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.AssemblyInfoInputs.cache
+C:\Users\TP-Bluray\Source\Repos\anatolebardet\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.AssemblyInfo.cs
+C:\Users\TP-Bluray\Source\Repos\anatolebardet\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.csproj.CoreCompileInputs.cache
+C:\Users\TP-Bluray\Source\Repos\anatolebardet\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\TP-Bluray\Source\Repos\anatolebardet\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\TP-Bluray\Source\Repos\anatolebardet\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.dll
+C:\Users\TP-Bluray\Source\Repos\anatolebardet\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\refint\VideoTheque.dll
+C:\Users\TP-Bluray\Source\Repos\anatolebardet\dotnetproject\VideoTheque\VideoTheque\obj\Debug\net6.0\VideoTheque.pdb
+>>>>>>> 2506b20eeb50a6077dceec16195aeac8ebf3d994
