@@ -1,5 +1,5 @@
 namespace VideoTheque.DTOs
-
+{
 public class Film
 {
     public int Id { get; set; }
