@@ -46,7 +46,7 @@ namespace VideoTheque.Repositories.AgeRatings
                 throw new KeyNotFoundException($"AgeRating '{id}' non trouvé");
             }
 
-            _db.AgeRatings.Remove(AgeRatingToDelete);
+            _db.AgeRatings.Remove(ageRatingToDelete);
             return _db.SaveChangesAsync();
         }
     }

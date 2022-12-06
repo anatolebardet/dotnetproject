@@ -24,24 +24,24 @@ namespace VideoTheque.Businesses.Personnes
                 throw new NotFoundException($"Personne '{id}' non trouvé");
             }
 
-            return Personne;
+            return personne;
         }
 
         public PersonneDto InsertPersonne(PersonneDto personne)
         {
             if (_personneDao.InsertPersonne(personne).IsFaulted)
             {
-                throw new InternalErrorException($"Erreur lors de l'insertion du Personne {Personne.Name}");
+                throw new InternalErrorException($"Erreur lors de l'insertion du Personne {personne.FirstName}");
             }
 
-            return Personne;
+            return personne;
         }
 
-        public void UpdatePersonne(int id, PersonneDto Personne)
+        public void UpdatePersonne(int id, PersonneDto personne)
         {
             if (_personneDao.UpdatePersonne(id, personne).IsFaulted)
             {
-                throw new InternalErrorException($"Erreur lors de la modification du Personne {personne.Name}");
+                throw new InternalErrorException($"Erreur lors de la modification du Personne {personne.FirstName}");
             }
         }
 

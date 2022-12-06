@@ -31,7 +31,7 @@ namespace VideoTheque.Businesses.BluRays
         {
             if (_bluRayDao.InsertBluRay(bluRay).IsFaulted)
             {
-                throw new InternalErrorException($"Erreur lors de l'insertion du bluRay {bluRay.Name}");
+                throw new InternalErrorException($"Erreur lors de l'insertion du bluRay {bluRay.Title}");
             }
 
             return bluRay;
@@ -41,7 +41,7 @@ namespace VideoTheque.Businesses.BluRays
         {
             if (_bluRayDao.UpdateBluRay(id, bluRay).IsFaulted)
             {
-                throw new InternalErrorException($"Erreur lors de la modification du bluRay {bluRay.Name}");
+                throw new InternalErrorException($"Erreur lors de la modification du bluRay {bluRay.Title}");
             }
         }
 

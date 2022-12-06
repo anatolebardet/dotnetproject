@@ -33,7 +33,7 @@ namespace VideoTheque.Repositories.BluRays
                 throw new KeyNotFoundException($"BluRay '{id}' non trouvé");
             }
 
-            bluRayToUpdate.Name = bluRay.Name;
+            bluRayToUpdate.Title = bluRay.Title;
             return _db.SaveChangesAsync();
         }
 

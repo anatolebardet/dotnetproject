@@ -35,7 +35,7 @@ namespace VideoTheque.Controllers
         [HttpPut("{id}")]
         public async Task<IResult> UpdateHost([FromRoute] int id, [FromBody] HostViewModel hostVM)
         {
-            _hostsBusiness.UpdateHost(id, HostVM.Adapt<HostDto>());
+            _hostsBusiness.UpdateHost(id, hostVM.Adapt<HostDto>());
             return Results.NoContent();
         }
 

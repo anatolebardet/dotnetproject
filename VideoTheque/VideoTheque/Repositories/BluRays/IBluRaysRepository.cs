@@ -5,14 +5,14 @@ namespace VideoTheque.Repositories.BluRays
 {
     public interface IBluRaysRepository
     {
-        Task<List<BluRaysDto>> GetBluRays();
+        Task<List<BluRayDto>> GetBluRays();
 
-        ValueTask<BluRaysDto?> GetBluRays(int id);
+        ValueTask<BluRayDto?> GetBluRay(int id);
 
-        Task InsertBluRays(BluRaysDto bluRays);
+        Task InsertBluRay(BluRayDto bluRays);
 
-        Task UpdateBluRays(int id, BluRaysDto bluRays);
+        Task UpdateBluRay(int id, BluRayDto bluRays);
 
-        Task DeleteBluRays(int id);
+        Task DeleteBluRay(int id);
     }
 }

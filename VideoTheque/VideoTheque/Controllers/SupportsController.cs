@@ -11,9 +11,9 @@ namespace VideoTheque.Controllers
     public class SupportsController : ControllerBase
     {
         private readonly IBluRaysBusiness _supportsBusiness;
-        protected readonly ILogger<BluRaysController> _logger;
+        protected readonly ILogger<SupportsController> _logger;
 
-        public SupportsController(ILogger<BluRaysController> logger, IBluRaysBusiness supportsBusiness)
+        public SupportsController(ILogger<SupportsController> logger, IBluRaysBusiness supportsBusiness)
         {
             _logger = logger;
             _supportsBusiness = supportsBusiness;

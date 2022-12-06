@@ -33,7 +33,7 @@ namespace VideoTheque.Repositories.Personnes
                 throw new KeyNotFoundException($"Personne '{id}' non trouvé");
             }
 
-            personneToUpdate.Name = personne.Name;
+            personneToUpdate.FirstName = personne.FirstName;
             return _db.SaveChangesAsync();
         }
 
