@@ -3,50 +3,50 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using VideoTheque.Context;
 using VideoTheque.DTOs;
 
-namespace VideoTheque.Repositories.Genres
+namespace VideoTheque.Repositories.BluRays
 {
-    public class GenresRepository : IGenresRepository
+    public class BluRaysRepository : IBluRaysRepository
     {
         private readonly VideothequeDb _db;
 
-        public GenresRepository(VideothequeDb db)
+        public BluRaysRepository(VideothequeDb db)
         {
             _db = db;
         }
 
-        public Task<List<GenreDto>> GetGenres() => _db.Genres.ToListAsync();
+        public Task<List<BluRayDto>> GetBluRays() => _db.BluRays.ToListAsync();
 
-        public ValueTask<GenreDto?> GetGenre(int id) => _db.Genres.FindAsync(id);
+        public ValueTask<BluRayDto?> GetBluRay(int id) => _db.BluRays.FindAsync(id);
 
-        public Task InsertGenre(GenreDto genre)
+        public Task InsertBluRay(BluRayDto bluRay)
         {
-            _db.Genres.AddAsync(genre);
+            _db.BluRays.AddAsync(bluRay);
             return _db.SaveChangesAsync();
         }
 
-        public Task UpdateGenre(int id, GenreDto genre)
+        public Task UpdateBluRay(int id, BluRayDto bluRay)
         {
-            var genreToUpdate = _db.Genres.FindAsync(id).Result;
+            var bluRayToUpdate = _db.BluRays.FindAsync(id).Result;
 
-            if (genreToUpdate is null)
+            if (bluRayToUpdate is null)
             {
-                throw new KeyNotFoundException($"Genre '{id}' non trouvé");
+                throw new KeyNotFoundException($"BluRay '{id}' non trouvé");
             }
 
-            genreToUpdate.Name = genre.Name;
+            bluRayToUpdate.Name = bluRay.Name;
             return _db.SaveChangesAsync();
         }
 
-        public Task DeleteGenre(int id)
+        public Task DeleteBluRay(int id)
         {
-            var genreToDelete = _db.Genres.FindAsync(id).Result;
+            var bluRayToDelete = _db.BluRays.FindAsync(id).Result;
 
-            if (genreToDelete is null)
+            if (bluRayToDelete is null)
             {
-                throw new KeyNotFoundException($"Genre '{id}' non trouvé");
+                throw new KeyNotFoundException($"BluRay '{id}' non trouvé");
             }
 
-            _db.Genres.Remove(genreToDelete);
+            _db.BluRays.Remove(bluRayToDelete);
             return _db.SaveChangesAsync();
         }
     }
