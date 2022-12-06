@@ -30,30 +30,6 @@ namespace VideoTheque.ViewModels
         public string NameSurname { get; set; }
 
 
-        public PersonneDto ToDto()
-        {
-            return new PersonneDto
-            {
-                Id = this.Id,
-                LastName = this.LastName,
-                FirstName = this.FirstName,
-                Nationality= this.Nationality,
-                BirthDay=this.BirthDay,
-                NameSurname=this.NameSurname,
-            };
-        }
-
-        public static PersonneViewModel ToModel(PersonneDto dto)
-        {
-            return new PersonneViewModel
-            {
-                Id = dto.Id,
-                LastName = dto.LastName,
-                FirstName = dto.FirstName,
-                Nationality= dto.Nationality,
-                BirthDay=dto.BirthDay,
-                NameSurname=dto.NameSurname,
-            };
-        }
+    
     }
 }
