@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using VideoTheque.DTOs;
 
-namespace VideoTheque.Repositories.BluRayss
+namespace VideoTheque.Repositories.BluRays
 {
-    public interface IBluRayssRepository
+    public interface IBluRaysRepository
     {
-        Task<List<BluRaysDto>> GetBluRayss();
+        Task<List<BluRaysDto>> GetBluRays();
 
         ValueTask<BluRaysDto?> GetBluRays(int id);
 

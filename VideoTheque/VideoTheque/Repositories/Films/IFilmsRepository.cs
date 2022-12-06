@@ -1,18 +1,18 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using VideoTheque.DTOs;
 
-namespace VideoTheque.Repositories.Genres
+namespace VideoTheque.Repositories.Films
 {
-    public interface IGenresRepository
+    public interface IFilmsRepository
     {
-        Task<List<GenreDto>> GetGenres();
+        Task<List<FilmDto>> GetFilms();
 
-        ValueTask<GenreDto?> GetGenre(int id);
+        ValueTask<FilmDto?> GetFilm(int id);
 
-        Task InsertGenre(GenreDto genre);
+        Task InsertFilm(FilmDto film);
 
-        Task UpdateGenre(int id, GenreDto genre);
+        Task UpdateFilm(int id, FilmDto film);
 
-        Task DeleteGenre(int id);
+        Task DeleteFilm(int id);
     }
 }
