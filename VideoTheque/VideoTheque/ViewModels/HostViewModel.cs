@@ -4,7 +4,7 @@ using VideoTheque.DTOs;
 
 namespace VideoTheque.ViewModels
 {
-    public class GenreViewModel
+    public class HostViewModel
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }
@@ -13,6 +13,10 @@ namespace VideoTheque.ViewModels
         [Required]
         public string Name { get; set; }
 
-       
+        [JsonPropertyName("url")]
+        [Required]
+        public string Url { get; set; }
+
+
     }
 }
