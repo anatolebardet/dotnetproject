@@ -4,7 +4,7 @@ using VideoTheque.DTOs;
 
 namespace VideoTheque.ViewModels
 {
-    public class FilmViewModel
+    public class FilmsViewModel
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }

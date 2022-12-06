@@ -8,32 +8,32 @@ namespace VideoTheque.Controllers
 
     [ApiController]
     [Route("blurays")]
-    public class SupportController : ControllerBase
+    public class SupportsController : ControllerBase
     {
         private readonly IBluRaysBusiness _supportsBusiness;
         protected readonly ILogger<BluRaysController> _logger;
 
-        public BluRaysController(ILogger<BluRaysController> logger, IBluRaysBusiness supportsBusiness)
+        public SupportsController(ILogger<BluRaysController> logger, IBluRaysBusiness supportsBusiness)
         {
             _logger = logger;
             _supportsBusiness = supportsBusiness;
         }
 
         [HttpGet]
-        public async Task<List<BluRayViewModel>> GetBluRays() => (await _supportsBusiness.GetBluRays()).Adapt<List<BluRayViewModel>>();
+        public async Task<List<SupportsViewModel>> GetBluRays() => (await _supportsBusiness.GetBluRays()).Adapt<List<SupportsViewModel>>();
 
         [HttpGet("{id}")]
-        public async Task<BluRayViewModel> GetBluRay([FromRoute] int id) => _supportsBusiness.GetBluRay(id).Adapt<BluRayViewModel>();
+        public async Task<SupportsViewModel> GetBluRay([FromRoute] int id) => _supportsBusiness.GetBluRay(id).Adapt<SupportsViewModel>();
 
         [HttpPost]
-        public async Task<IResult> InsentBluRay([FromBody] BluRayViewModel supportVM)
+        public async Task<IResult> InsentBluRay([FromBody] SupportsViewModel supportVM)
         {
             var created = _supportsBusiness.InsertBluRay(supportVM.Adapt<BluRayDto>());
             return Results.Created($"/blurays/{created.Id}", created);
         }
 
         [HttpPut("{id}")]
-        public async Task<IResult> UpdateBluRay([FromRoute] int id, [FromBody] BluRayViewModel supportVM)
+        public async Task<IResult> UpdateBluRay([FromRoute] int id, [FromBody] SupportsViewModel supportVM)
         {
             _supportsBusiness.UpdateBluRay(id, supportVM.Adapt<BluRayDto>());
             return Results.NoContent();
