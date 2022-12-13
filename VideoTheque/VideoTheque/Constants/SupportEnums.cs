@@ -1,8 +1,13 @@
-﻿public class SupportEnums : IComparable
-
+﻿
+namespace VideoTheque.Constants
 {
-    public int CompareTo(object? obj)
+    public class SupportEnums
+
     {
-        throw new NotImplementedException();
+        enum supportEnums
+        {
+            Bluray = 1
+        }
+
     }
 }

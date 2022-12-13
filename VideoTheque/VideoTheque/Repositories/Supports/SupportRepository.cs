@@ -12,9 +12,15 @@ namespace VideoTheque.Repositories.Supports
                 new SupportDto
                 {
                     Id= (int) SupportEnums.Bluray,
-                    Name = (string) SupportEnums.Bluray
+                    Name = (string) SupportEnums.Bluray.ToString(),
                 }
-            }
+            };
+            return result;
+        }
+        public SupportDto getById(int id)
+        {
+            var support = (SupportEnums)id;
+            return new SupportDto(Id = (int)support);
         }
     }
 }
