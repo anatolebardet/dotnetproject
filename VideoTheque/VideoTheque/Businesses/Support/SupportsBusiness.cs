@@ -31,7 +31,7 @@ namespace VideoTheque.Businesses.Supports
         {
             if (_supportDao.InsertSupport(support).IsFaulted)
             {
-                throw new InternalErrorException($"Erreur lors de l'insertion du Support {support.FirstName}");
+                throw new InternalErrorException($"Erreur lors de l'insertion du Support {support.Name}");
             }
 
             return support;
@@ -41,7 +41,7 @@ namespace VideoTheque.Businesses.Supports
         {
             if (_supportDao.UpdateSupport(id, support).IsFaulted)
             {
-                throw new InternalErrorException($"Erreur lors de la modification du Support {support.FirstName}");
+                throw new InternalErrorException($"Erreur lors de la modification du Support {support.Name}");
             }
         }
 
