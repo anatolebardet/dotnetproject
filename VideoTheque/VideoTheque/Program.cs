@@ -4,6 +4,12 @@ using VideoTheque.Businesses.Genres;
 using VideoTheque.Context;
 using VideoTheque.Core;
 using VideoTheque.Repositories.Genres;
+using VideoTheque.Businesses.AgeRatings;
+using VideoTheque.Repositories.AgeRatings;
+using VideoTheque.Businesses.Personnes;
+using VideoTheque.Repositories.Personnes;
+using VideoTheque.Businesses.Hosts;
+using VideoTheque.Repositories.Hosts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +28,19 @@ builder.Services.AddSqlite<VideothequeDb>(connectionString);
 
 builder.Services.AddScoped(typeof(IGenresRepository), typeof(GenresRepository));
 builder.Services.AddScoped(typeof(IGenresBusiness), typeof(GenresBusiness));
+
+builder.Services.AddScoped(typeof(IAgeRatingsRepository), typeof(AgeRatingsRepository));
+builder.Services.AddScoped(typeof(IAgeRatingsBusiness), typeof(AgeRatingsBusiness));
+
+builder.Services.AddScoped(typeof(IPersonnesRepository), typeof(PersonnesRepository));
+builder.Services.AddScoped(typeof(IPersonnesBusiness), typeof(PersonnesBusiness));
+
+builder.Services.AddScoped(typeof(IHostsRepository), typeof(HostsRepository));
+builder.Services.AddScoped(typeof(IHostsBusiness), typeof(HostsBusiness));
+
+builder.Services.AddScoped(typeof(IAgeRatingsRepository), typeof(AgeRatingsRepository));
+builder.Services.AddScoped(typeof(IAgeRatingsBusiness), typeof(AgeRatingsBusiness));
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
