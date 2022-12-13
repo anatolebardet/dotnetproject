@@ -8,7 +8,6 @@ namespace VideoTheque.Repositories.Supports
     {
         public Task<List<SupportDto>> GetSupports()
         {
-
             var list = new List<SupportDto>
             {
                 new SupportDto

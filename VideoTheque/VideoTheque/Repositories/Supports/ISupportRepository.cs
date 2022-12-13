@@ -8,6 +8,5 @@ namespace VideoTheque.Repositories.Supports
         public Task<List<SupportDto>> GetSupports();
 
         public SupportDto GetSupport(int id);
-
     }
 }
