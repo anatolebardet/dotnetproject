@@ -5,8 +5,7 @@ namespace VideoTheque.Constants
 
     {
         Bluray = 1
-            Bluray = 1
-        }
+    }
 
     
 }
