@@ -33,14 +33,9 @@ namespace VideoTheque.Businesses.Supports
 
         public Task<List<SupportDto>> GetSupports() => _supportDao.GetSupports();
 
-        public SupportDto InsertSupport(SupportDto Support)
+        public SupportDto InsertSupport(SupportDto support)
         {
-            if (_supportDao.InsertGenre(genre).IsFaulted)
-            {
-                throw new InternalErrorException($"Erreur lors de l'insertion du genre {genre.Name}");
-            }
-
-            return genre;
+            throw new NotImplementedException();
         }
 
         public void UpdateSupport(int id, SupportDto Support)
