@@ -10,6 +10,8 @@ using VideoTheque.Businesses.Personnes;
 using VideoTheque.Repositories.Personnes;
 using VideoTheque.Businesses.Hosts;
 using VideoTheque.Repositories.Hosts;
+using VideoTheque.Businesses.Supports;
+using VideoTheque.Repositories.Supports;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +42,9 @@ builder.Services.AddScoped(typeof(IHostsBusiness), typeof(HostsBusiness));
 
 builder.Services.AddScoped(typeof(IAgeRatingsRepository), typeof(AgeRatingsRepository));
 builder.Services.AddScoped(typeof(IAgeRatingsBusiness), typeof(AgeRatingsBusiness));
+
+builder.Services.AddScoped(typeof(ISupportsRepository), typeof(SupportRepository));
+builder.Services.AddScoped(typeof(ISupportsBusiness), typeof(SupportsBusiness));
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

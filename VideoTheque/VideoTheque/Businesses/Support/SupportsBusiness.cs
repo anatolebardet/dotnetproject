@@ -13,11 +13,14 @@ namespace VideoTheque.Businesses.Supports
             _supportDao = supportDao;
         }
 
-        public Task<List<SupportDto>> GetSupports() => _supportDao.GetSupports();
+        public void DeleteSupport(int id)
+        {
+            throw new NotImplementedException();
+        }
 
         public SupportDto GetSupport(int id)
-        {
-            var support = _supportDao.GetSupport(id).Result;
+        {  
+            var support = _supportDao.GetSupport(id);
 
             if (support == null)
             {
@@ -27,31 +30,16 @@ namespace VideoTheque.Businesses.Supports
             return support;
         }
 
-        public SupportDto InsertSupport(SupportDto support)
-        {
-            if (_supportDao.InsertSupport(support).IsFaulted)
-            {
-                throw new InternalErrorException($"Erreur lors de l'insertion du Support {support.Name}");
-            }
+        public Task<List<SupportDto>> GetSupports() => _supportDao.GetSupports();
 
-            return support;
+        public SupportDto InsertSupport(SupportDto Support)
+        {
+            throw new NotImplementedException();
         }
 
-        public void UpdateSupport(int id, SupportDto support)
+        public void UpdateSupport(int id, SupportDto Support)
         {
-            if (_supportDao.UpdateSupport(id, support).IsFaulted)
-            {
-                throw new InternalErrorException($"Erreur lors de la modification du Support {support.Name}");
-            }
-        }
-
-
-        public void DeleteSupport(int id)
-        {
-            if (_supportDao.DeleteSupport(id).IsFaulted)
-            {
-                throw new InternalErrorException($"Erreur lors de la suppression du Support d'identifiant {id}");
-            }
+            throw new NotImplementedException();
         }
     }
 }
