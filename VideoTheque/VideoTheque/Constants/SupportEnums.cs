@@ -1,13 +1,10 @@
 ﻿
 namespace VideoTheque.Constants
 {
-    public class SupportEnums
-
+    public enum SupportEnums
     {
-        enum supportEnums
-        {
-            Bluray = 1
-        }
-
+        Bluray = 1
     }
+
+    
 }
