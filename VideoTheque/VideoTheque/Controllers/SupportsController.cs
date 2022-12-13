@@ -26,7 +26,7 @@ namespace VideoTheque.Controllers
         public async Task<SupportsViewModel> GetSupport([FromRoute] int id) => _supportsBusiness.GetSupport(id).Adapt<SupportsViewModel>();
 
         [HttpPost]
-        public async Task<IResult> InsentSupport([FromBody] SupportsViewModel supportVM)
+        public async Task<IResult> InsertSupport([FromBody] SupportsViewModel supportVM)
         {
             var created = _supportsBusiness.InsertSupport(supportVM.Adapt<SupportDto>());
             return Results.Created($"/supports/{created.Id}", created);
