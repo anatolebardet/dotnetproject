@@ -2,47 +2,47 @@ namespace VideoTheque.Controllers
 {
     using Mapster;
     using Microsoft.AspNetCore.Mvc;
-    using VideoTheque.Businesses.BluRays;
+    using VideoTheque.Businesses.Supports;
     using VideoTheque.DTOs;
     using VideoTheque.ViewModels;
 
     [ApiController]
-    [Route("blurays")]
+    [Route("support")]
     public class SupportsController : ControllerBase
     {
-        private readonly IBluRaysBusiness _supportsBusiness;
+        private readonly ISupportsBusiness _supportsBusiness;
         protected readonly ILogger<SupportsController> _logger;
 
-        public SupportsController(ILogger<SupportsController> logger, IBluRaysBusiness supportsBusiness)
+        public SupportsController(ILogger<SupportsController> logger, ISupportsBusiness supportsBusiness)
         {
             _logger = logger;
             _supportsBusiness = supportsBusiness;
         }
 
         [HttpGet]
-        public async Task<List<SupportsViewModel>> GetBluRays() => (await _supportsBusiness.GetBluRays()).Adapt<List<SupportsViewModel>>();
+        public async Task<List<SupportsViewModel>> GetSupports() => (await _supportsBusiness.GetSupports()).Adapt<List<SupportsViewModel>>();
 
         [HttpGet("{id}")]
-        public async Task<SupportsViewModel> GetBluRay([FromRoute] int id) => _supportsBusiness.GetBluRay(id).Adapt<SupportsViewModel>();
+        public async Task<SupportsViewModel> GetSupport([FromRoute] int id) => _supportsBusiness.GetSupport(id).Adapt<SupportsViewModel>();
 
         [HttpPost]
-        public async Task<IResult> InsentBluRay([FromBody] SupportsViewModel supportVM)
+        public async Task<IResult> InsentSupport([FromBody] SupportsViewModel supportVM)
         {
-            var created = _supportsBusiness.InsertBluRay(supportVM.Adapt<BluRayDto>());
-            return Results.Created($"/blurays/{created.Id}", created);
+            var created = _supportsBusiness.InsertSupport(supportVM.Adapt<SupportDto>());
+            return Results.Created($"/supports/{created.Id}", created);
         }
 
         [HttpPut("{id}")]
-        public async Task<IResult> UpdateBluRay([FromRoute] int id, [FromBody] SupportsViewModel supportVM)
+        public async Task<IResult> UpdateSupport([FromRoute] int id, [FromBody] SupportsViewModel supportVM)
         {
-            _supportsBusiness.UpdateBluRay(id, supportVM.Adapt<BluRayDto>());
+            _supportsBusiness.UpdateSupport(id, supportVM.Adapt<SupportDto>());
             return Results.NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IResult> DeleteBluRay([FromRoute] int id)
+        public async Task<IResult> DeleteSupport([FromRoute] int id)
         {
-            _supportsBusiness.DeleteBluRay(id);
+            _supportsBusiness.DeleteSupport(id);
             return Results.Ok();
         }
     }
