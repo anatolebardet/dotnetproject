@@ -2,6 +2,7 @@
 using VideoTheque.DTOs;
 using VideoTheque.Repositories.BluRays;
 using VideoTheque.Repositories.Supports;
+using VideoTheque.Businesses.Genres;
 
 namespace VideoTheque.Businesses.Supports
 {
@@ -35,7 +36,9 @@ namespace VideoTheque.Businesses.Supports
 
         public SupportDto InsertSupport(SupportDto Support)
         {
-            throw new NotImplementedException();
+            
+                throw new InternalErrorException($"Erreur lors de l'insertion du genre ");
+            
         }
 
         public void UpdateSupport(int id, SupportDto Support)
