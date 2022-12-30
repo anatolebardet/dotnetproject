@@ -3662,24 +3662,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\johnf\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\TP-Bluray\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\johnf\\source\\repos\\dotnetproject\\VideoTheque\\VideoTheque\\VideoTheque.csproj",
+      "projectUniqueName": "C:\\Users\\TP-Bluray\\Source\\Repos\\anatolebardet\\dotnetproject\\VideoTheque\\VideoTheque\\VideoTheque.csproj",
       "projectName": "VideoTheque",
-      "projectPath": "C:\\Users\\johnf\\source\\repos\\dotnetproject\\VideoTheque\\VideoTheque\\VideoTheque.csproj",
-      "packagesPath": "C:\\Users\\johnf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\johnf\\source\\repos\\dotnetproject\\VideoTheque\\VideoTheque\\obj\\",
+      "projectPath": "C:\\Users\\TP-Bluray\\Source\\Repos\\anatolebardet\\dotnetproject\\VideoTheque\\VideoTheque\\VideoTheque.csproj",
+      "packagesPath": "C:\\Users\\TP-Bluray\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\TP-Bluray\\Source\\Repos\\anatolebardet\\dotnetproject\\VideoTheque\\VideoTheque\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\johnf\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\TP-Bluray\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3687,7 +3682,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -1,16 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\VideoTheque",
-    "\\VideoTheque\\VideoTheque",
-    "\\VideoTheque\\VideoTheque\\Controllers",
-    "\\VideoTheque\\VideoTheque\\DTOs",
-    "\\VideoTheque\\VideoTheque\\Repositories",
-    "\\VideoTheque\\VideoTheque\\Repositories\\Genres",
-    "\\VideoTheque\\VideoTheque\\Repositories\\Hosts",
-    "\\VideoTheque\\VideoTheque\\Repositories\\Personnes",
-    "\\VideoTheque\\VideoTheque\\ViewModels"
+    "\\VideoTheque"
   ],
-  "SelectedNode": "\\VideoTheque\\VideoTheque\\VideoTheque.csproj",
+  "SelectedNode": "\\VideoTheque\\VideoTheque.sln",
   "PreviewInSolutionExplorer": false
 }

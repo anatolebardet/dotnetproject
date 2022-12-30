@@ -4,7 +4,7 @@ namespace VideoTheque.Businesses.Film
 {
     public interface IFilmBusiness
     {
-        Task<List<FilmDto>> GetFilms();
+        List<FilmDto> GetFilms();
 
         FilmDto GetFilm(int id);
 

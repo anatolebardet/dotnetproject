@@ -16,6 +16,6 @@ namespace VideoTheque.Repositories.Films
 
         public Task<List<BluRayDto>> GetFilms() => _db.BluRays.ToListAsync();
 
-        public ValueTask<BluRayDto?> GetFilm(int id) => _db.BluRays.FindAsync(id);
+        public ValueTask<BluRayDto> GetFilm(int id) => _db.BluRays.FindAsync(id);
     }
 }
