@@ -23,7 +23,7 @@ namespace VideoTheque.Repositories.Supports
         public SupportDto GetSupport(int id)
         {
             var support = (SupportEnums)id;
-            return new SupportDto(Id: (int)support);
+            return new SupportDto(Id: (int)support, name: "BluRay");
         }
     }
 }

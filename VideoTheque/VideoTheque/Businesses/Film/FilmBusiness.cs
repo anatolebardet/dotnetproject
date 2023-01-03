@@ -3,24 +3,37 @@ using VideoTheque.Businesses.BluRays;
 using VideoTheque.Constants;
 using VideoTheque.Core;
 using VideoTheque.DTOs;
+using VideoTheque.Repositories.AgeRatings;
 using VideoTheque.Repositories.BluRays;
 using VideoTheque.Repositories.Films;
+using VideoTheque.Repositories.Genres;
+using VideoTheque.Repositories.Personnes;
+using VideoTheque.Repositories.Supports;
 
 namespace VideoTheque.Businesses.Film
 {
     public class FilmBusiness : IFilmBusiness
     {
 
-        private readonly IFilmsRepository _bluRaysDao;
-        private readonly IBluRaysBusiness _bluRaysBusiness;
+        private readonly IFilmsRepository _bluRayDao;
+        private readonly IPersonnesRepository _personneDao;
+        private readonly IGenresRepository _genreDao;
+        private readonly ISupportsRepository _supportDao;
+        private readonly IAgeRatingsRepository _ageRatingDao;
 
-        public FilmBusiness(IFilmsRepository bluRaysDao)
+        public FilmBusiness(IFilmsRepository bluRaysDao, IPersonnesRepository personnesDao, 
+            IGenresRepository genreDao, IAgeRatingsRepository ageRatingDao, ISupportsRepository supportDao)
         {
-            _bluRaysDao = bluRaysDao;
+            _bluRayDao = bluRaysDao;
+            _personneDao = personnesDao;
+            _genreDao = genreDao;
+            _supportDao = supportDao;
+            _ageRatingDao = ageRatingDao;
+
         }
         public void DeleteFilm(int id)
         {
-            if (_bluRaysDao.DeleteFilm(id).IsFaulted)
+            if (_bluRayDao.DeleteFilm(id).IsFaulted)
             {
                 throw new InternalErrorException($"Erreur lors de la suppression du film d'identifiant {id}");
             }
@@ -32,7 +45,7 @@ namespace VideoTheque.Businesses.Film
             BluRayDto bluray = new BluRayDto();
             try
             {
-                bluray = _bluRaysDao.GetFilm(id).Result;
+                bluray = _bluRayDao.GetFilm(id).Result;
             }
             catch(System.NullReferenceException ex)
             {
@@ -43,12 +56,12 @@ namespace VideoTheque.Businesses.Film
                 film = new FilmDto()
                 {
                     Id = (int)bluray.Id,
-                    IdScenarist = (int)bluray.IdScenarist,
-                    IdDirector = (int)bluray.IdDirector,
-                    IdGenre = (int)bluray.IdGenre,
-                    IdFirstActor = (int)bluray.IdFirstActor,
-                    IdAgeRating = (int)bluray.IdAgeRating,
-                    IdSupport = (int)SupportEnums.Bluray,
+                    Scenarist = _personneDao.GetPersonne((int)bluray.IdFirstActor).Result,
+                    Director = _personneDao.GetPersonne((int)bluray.IdFirstActor).Result,
+                    Genre = _genreDao.GetGenre((int)bluray.IdGenre).Result,
+                    FirstActor = _personneDao.GetPersonne((int)bluray.IdFirstActor).Result,
+                    AgeRating = _ageRatingDao.GetAgeRating(bluray.IdAgeRating).Result,
+                    Support = _supportDao.GetSupport(1),
                     Duration = (long)bluray.Duration,
                     Title = (string)bluray.Title,
                 };
@@ -64,20 +77,25 @@ namespace VideoTheque.Businesses.Film
         public List<FilmDto> GetFilms()
         {
             List<FilmDto> films = new List<FilmDto>();
-            List<BluRayDto> blurays = _bluRaysDao.GetFilms().Result;
+            List<BluRayDto> blurays = _bluRayDao.GetFilms().Result;
+            PersonneDto _scenarist = new PersonneDto();
             foreach(BluRayDto bluray in blurays)
             {
+                if (_personneDao.GetPersonne((int)bluray.IdScenarist).Result != null)
+                {
+                    _scenarist = _personneDao.GetPersonne((int)bluray.IdScenarist).Result;
+                }
                 films.Add(new FilmDto()
                 {
                     Id = (int)bluray.Id,
-                    IdScenarist = (int)bluray.IdScenarist,
-                    IdDirector = (int)bluray.IdDirector,
-                    IdGenre = (int)bluray.IdGenre,
-                    IdFirstActor = (int)bluray.IdFirstActor,
-                    IdAgeRating = (int)bluray.IdAgeRating,
-                    IdSupport = (int)SupportEnums.Bluray,
+                    Scenarist = _personneDao.GetPersonne((int)bluray.IdFirstActor).Result,
+                    Director = _personneDao.GetPersonne((int)bluray.IdFirstActor).Result,
+                    Genre = _genreDao.GetGenre((int)bluray.IdGenre).Result,
+                    FirstActor = _personneDao.GetPersonne((int)bluray.IdFirstActor).Result,
+                    AgeRating = _ageRatingDao.GetAgeRating(bluray.IdAgeRating).Result,
+                    Support = _supportDao.GetSupport((int)SupportEnums.Bluray),
                     Duration = (long)bluray.Duration,
-                    Title = (string)bluray.Title
+                    Title = (string)bluray.Title,
 
                 });
             }
@@ -91,18 +109,26 @@ namespace VideoTheque.Businesses.Film
                 Id = (int)film.Id,
                 Title = (string)film.Title,
                 Duration = (long)film.Duration,
-                IdFirstActor = (int)film.IdFirstActor,
-                IdDirector = (int)film.IdDirector,
-                IdScenarist = (int)film.IdScenarist,
-                IdAgeRating = (int)film.IdAgeRating,
-                IdGenre = (int)film.IdGenre,
+                IdFirstActor = (int)film.FirstActor.Id,
+                IdDirector = (int)film.Director.Id,
+                IdScenarist = (int)film.Scenarist.Id,
+                IdAgeRating = (int)film.AgeRating.Id,
+                IdGenre = (int)film.Genre.Id,
                 IsAvailable = true,
                 IdOwner = null
 
             };
-            if (_bluRaysDao.InsertFilm(bluray).IsFaulted)
+            if (_bluRayDao.InsertFilm(bluray).IsFaulted)
             {
                 throw new InternalErrorException($"Erreur lors de l'insertion du film {film.Title}");
+            }
+            else
+            {
+                _personneDao.InsertPersonne(film.FirstActor);
+                _personneDao.InsertPersonne(film.Director);
+                _personneDao.InsertPersonne(film.Scenarist);
+                _genreDao.InsertGenre(film.Genre);
+                _ageRatingDao.InsertAgeRating(film.AgeRating);
             }
 
             return film;
@@ -115,16 +141,23 @@ namespace VideoTheque.Businesses.Film
                 Id = (int)film.Id,
                 Title = (string)film.Title,
                 Duration = (long)film.Duration,
-                IdFirstActor = (int)film.IdFirstActor,
-                IdDirector = (int)film.IdDirector,
-                IdScenarist = (int)film.IdScenarist,
-                IdAgeRating = (int)film.IdAgeRating,
-                IdGenre = (int)film.IdGenre
-
+                IdFirstActor = (int)film.FirstActor.Id,
+                IdDirector = (int)film.Director.Id,
+                IdScenarist = (int)film.Scenarist.Id,
+                IdAgeRating = (int)film.AgeRating.Id,
+                IdGenre = (int)film.Genre.Id
             };
-            if (_bluRaysDao.UpdateFilm(id, bluray).IsFaulted)
+            if (_bluRayDao.UpdateFilm(id, bluray).IsFaulted)
             {
                 throw new InternalErrorException($"Erreur lors de la modification du film {film.Title}");
+            }
+            else
+            {
+                _personneDao.InsertPersonne(film.FirstActor);
+                _personneDao.InsertPersonne(film.Director);
+                _personneDao.InsertPersonne(film.Scenarist);
+                _genreDao.InsertGenre(film.Genre);
+                _ageRatingDao.InsertAgeRating(film.AgeRating);
             }
         }
     }

@@ -21,22 +21,22 @@ namespace VideoTheque.Controllers
         }
 
         [HttpGet]
-        public async Task<List<FilmViewModel>> GetFilms() => _filmsBusiness.GetFilms().Adapt<List<FilmViewModel>>();
+        public async Task<List<FilmViewModel>> GetFilms() => _filmsBusiness.GetFilms().Adapt<List<FilmViewModel>>(getTypeAdapterConfig());
 
         [HttpGet("{id}")]
-        public async Task<FilmViewModel> GetFilm([FromRoute] int id) => _filmsBusiness.GetFilm(id).Adapt<FilmViewModel>();
+        public async Task<FilmViewModel> GetFilm([FromRoute] int id) => _filmsBusiness.GetFilm(id).Adapt<FilmViewModel>(getTypeAdapterConfig());
 
         [HttpPost]
         public async Task<IResult> InsentFilm([FromBody] FilmViewModel filmVM)
         {
-            var created = _filmsBusiness.InsertFilm(filmVM.Adapt<FilmDto>());
+            var created = _filmsBusiness.InsertFilm(filmVM.Adapt<FilmDto>(getTypeAdapterConfig()));
             return Results.Created($"/films/{created.Id}", created);
         }
 
         [HttpPut("{id}")]
         public async Task<IResult> UpdateFilm([FromRoute] int id, [FromBody] FilmViewModel filmVM)
         {
-            _filmsBusiness.UpdateFilm(id, filmVM.Adapt<FilmDto>());
+            _filmsBusiness.UpdateFilm(id, filmVM.Adapt<FilmDto>(getTypeAdapterConfig()));
             return Results.NoContent();
         }
 
@@ -45,6 +45,17 @@ namespace VideoTheque.Controllers
         {
             _filmsBusiness.DeleteFilm(id);
             return Results.Ok();
+        }
+        private TypeAdapterConfig getTypeAdapterConfig()
+        {
+            var _filmModel = new TypeAdapterConfig();
+            _filmModel.NewConfig<FilmDto, FilmViewModel>()
+                .Map(dest => dest.FirstActor, src => src.FirstActor.FirstName + " " + src.FirstActor.LastName)
+                .Map(dest => dest.Scenarist, src => src.Scenarist.FirstName + " " + src.Scenarist.LastName)
+                .Map(dest => dest.Support, src => src.Support.Name)
+                .Map(dest => dest.AgeRating, src => src.AgeRating.Name)
+                .Map(dest => dest.Director, src => src.Director.FirstName + " " + src.Director.LastName);
+            return _filmModel;
         }
     }
 }

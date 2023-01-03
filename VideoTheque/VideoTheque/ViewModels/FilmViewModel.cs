@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using VideoTheque.DTOs;
 
 namespace VideoTheque.ViewModels
 {
@@ -8,33 +9,33 @@ namespace VideoTheque.ViewModels
         [JsonPropertyName("id")]
         public int Id { get; set; }
 
-        [JsonPropertyName("iddirector")]
+        [JsonPropertyName("director")]
         [Required]
-        public int IdDirector { get; set; }
+        public string Director { get; set; }
 
-        [JsonPropertyName("idscenarist")]
-        public int IdScenarist { get; set; }
+        [JsonPropertyName("scenarist")]
+        public string Scenarist { get; set; }
 
         [JsonPropertyName("duration")]
         [Required]
         public long Duration { get; set; }
 
-        [JsonPropertyName("idsupport")]
-        public int IdSupport { get; set; }
+        [JsonPropertyName("support")]
+        public string Support { get; set; }
 
-        [JsonPropertyName("idagerating")]
+        [JsonPropertyName("agerating")]
         [Required]
-        public int IdAgeRating { get; set; }
+        public string AgeRating { get; set; }
 
-        [JsonPropertyName("idgenre")]
-        public int IdGenre { get; set; }
+        [JsonPropertyName("genre")]
+        public string Genre { get; set; }
 
         [JsonPropertyName("title")]
         [Required]
         public string Title { get; set; }
 
-        [JsonPropertyName("idfirstactor")]
-        public int IdFirstActor { get; set; }
+        [JsonPropertyName("firstactor")]
+        public string FirstActor { get; set; }
 
     }
 }
