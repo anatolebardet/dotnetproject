@@ -50,11 +50,11 @@ namespace VideoTheque.Controllers
         {
             var _filmModel = new TypeAdapterConfig();
             _filmModel.NewConfig<FilmDto, FilmViewModel>()
-                .Map(dest => dest.FirstActor, src => src.FirstActor.FirstName + " " + src.FirstActor.LastName)
-                .Map(dest => dest.Scenarist, src => src.Scenarist.FirstName + " " + src.Scenarist.LastName)
-                .Map(dest => dest.Support, src => src.Support.Name)
-                .Map(dest => dest.AgeRating, src => src.AgeRating.Name)
-                .Map(dest => dest.Director, src => src.Director.FirstName + " " + src.Director.LastName);
+                .Map(dest => dest.FirstActor, src => src.FirstActor)
+                .Map(dest => dest.Scenarist, src => src.Scenarist)
+                .Map(dest => dest.Support, src => src.Support)
+                .Map(dest => dest.AgeRating, src => src.AgeRating)
+                .Map(dest => dest.Director, src => src.Director);
             return _filmModel;
         }
     }
