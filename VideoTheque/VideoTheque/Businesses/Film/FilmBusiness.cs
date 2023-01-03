@@ -1,7 +1,9 @@
-﻿using VideoTheque.Businesses.BluRays;
+﻿using System.Reflection;
+using VideoTheque.Businesses.BluRays;
 using VideoTheque.Constants;
 using VideoTheque.Core;
 using VideoTheque.DTOs;
+using VideoTheque.Repositories.BluRays;
 using VideoTheque.Repositories.Films;
 
 namespace VideoTheque.Businesses.Film
@@ -18,7 +20,10 @@ namespace VideoTheque.Businesses.Film
         }
         public void DeleteFilm(int id)
         {
-            throw new NotImplementedException();
+            if (_bluRaysDao.DeleteFilm(id).IsFaulted)
+            {
+                throw new InternalErrorException($"Erreur lors de la suppression du film d'identifiant {id}");
+            }
         }
 
         public FilmDto GetFilm(int id)
@@ -81,12 +86,46 @@ namespace VideoTheque.Businesses.Film
 
         public FilmDto InsertFilm(FilmDto film)
         {
-            throw new NotImplementedException();
+            BluRayDto bluray = new BluRayDto()
+            {
+                Id = (int)film.Id,
+                Title = (string)film.Title,
+                Duration = (long)film.Duration,
+                IdFirstActor = (int)film.IdFirstActor,
+                IdDirector = (int)film.IdDirector,
+                IdScenarist = (int)film.IdScenarist,
+                IdAgeRating = (int)film.IdAgeRating,
+                IdGenre = (int)film.IdGenre,
+                IsAvailable = true,
+                IdOwner = null
+
+            };
+            if (_bluRaysDao.InsertFilm(bluray).IsFaulted)
+            {
+                throw new InternalErrorException($"Erreur lors de l'insertion du film {film.Title}");
+            }
+
+            return film;
         }
 
         public void UpdateFilm(int id, FilmDto film)
         {
-            throw new NotImplementedException();
+            BluRayDto bluray = new BluRayDto()
+            {
+                Id = (int)film.Id,
+                Title = (string)film.Title,
+                Duration = (long)film.Duration,
+                IdFirstActor = (int)film.IdFirstActor,
+                IdDirector = (int)film.IdDirector,
+                IdScenarist = (int)film.IdScenarist,
+                IdAgeRating = (int)film.IdAgeRating,
+                IdGenre = (int)film.IdGenre
+
+            };
+            if (_bluRaysDao.UpdateFilm(id, bluray).IsFaulted)
+            {
+                throw new InternalErrorException($"Erreur lors de la modification du film {film.Title}");
+            }
         }
     }
 }
