@@ -132,11 +132,11 @@ namespace VideoTheque.Businesses.Film
                 Id = (int)film.Id,
                 Title = (string)film.Title,
                 Duration = (long)film.Duration,
-                IdFirstActor = GetPersonne(film.FirstActor).Id,
-                IdDirector = GetPersonne(film.Director).Id,
-                IdScenarist = GetPersonne(film.Scenarist).Id,
-                IdAgeRating = GetAgeRating(film.AgeRating).Id,
-                IdGenre = GetGenre(film.Genre).Id
+                IdFirstActor = (int)GetPersonne(film.FirstActor).Id,
+                IdDirector = (int)GetPersonne(film.Director).Id,
+                IdScenarist = (int)GetPersonne(film.Scenarist).Id,
+                IdAgeRating = (int)GetAgeRating(film.AgeRating).Id,
+                IdGenre = (int)GetGenre(film.Genre).Id,
             };
             if (_bluRayDao.UpdateFilm(id, bluray).IsFaulted)
             {

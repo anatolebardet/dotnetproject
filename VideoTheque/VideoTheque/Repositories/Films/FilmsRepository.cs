@@ -34,6 +34,14 @@ namespace VideoTheque.Repositories.Films
             }
 
             bluRayToUpdate.Title = bluRay.Title;
+            bluRayToUpdate.Duration = bluRay.Duration;
+            bluRayToUpdate.IdDirector = bluRay.IdDirector;
+            bluRayToUpdate.IdGenre = bluRay.IdGenre;
+            bluRayToUpdate.IdScenarist = bluRay.IdScenarist;
+            bluRayToUpdate.Duration = bluRay.Duration;
+            bluRayToUpdate.IdAgeRating = bluRay.IdAgeRating;
+            bluRayToUpdate.IsAvailable = bluRay.IsAvailable;
+            bluRayToUpdate.IdOwner = bluRay.IdOwner;
             return _db.SaveChangesAsync();
         }
 
