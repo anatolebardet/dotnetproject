@@ -27,13 +27,13 @@ namespace VideoTheque.Businesses.Film
             BluRayDto bluray = new BluRayDto();
             try
             {
-                bluray = _bluRaysBusiness.GetBluRay(id);
+                bluray = _bluRaysDao.GetFilm(id).Result;
             }
             catch(System.NullReferenceException ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            if(bluray == null)
+            if(bluray != null)
             {
                 film = new FilmDto()
                 {
