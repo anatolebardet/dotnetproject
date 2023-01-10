@@ -185,5 +185,10 @@ namespace VideoTheque.Businesses.Film
             }
             return genreReturn;
         }
+
+        public List<FilmDto> GetAvailablePartnerFilms(int idPartner)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

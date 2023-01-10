@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using VideoTheque.Businesses.Film;
 using VideoTheque.DTOs;
+using VideoTheque.Repositories.Hosts;
 using VideoTheque.ViewModels;
 
 namespace VideoTheque.Controllers
@@ -12,20 +13,33 @@ namespace VideoTheque.Controllers
     {
 
         private readonly IFilmBusiness _filmsBusiness;
-        protected readonly ILogger<FilmsController> _logger;
+        protected readonly ILogger<FilmsController> _logger; 
+        private readonly HttpClient _httpClient;
+        private readonly IHostsRepository _hostRepository;
 
-        public FilmsController(ILogger<FilmsController> logger, IFilmBusiness filmsBusiness)
+        public FilmsController(ILogger<FilmsController> logger, IFilmBusiness filmsBusiness, IHostsRepository hostRepository, HttpClient httpClient)
         {
             _logger = logger;
-            _filmsBusiness = filmsBusiness;
+            _filmsBusiness = filmsBusiness; 
+            _hostRepository = hostRepository;
+            _httpClient = httpClient;
         }
+
+        [HttpGet("{idPartner}")]
+        public async Task<IActionResult> GetAvailableFilms(int idPartner)
+        {
+            var host = await _hostRepository.GetHost(idPartner);
+            var foreignFilms = await _httpClient.GetFromJsonAsync<List<FilmDto>>($"{host.Url}/api/emprunts");
+            return Ok(foreignFilms);
+        }
+        
+
 
         [HttpGet]
         public async Task<List<FilmViewModel>> GetFilms() => _filmsBusiness.GetFilms().Adapt<List<FilmViewModel>>(getTypeAdapterConfig());
 
         [HttpGet("{id}")]
         public async Task<FilmViewModel> GetFilm([FromRoute] int id) => _filmsBusiness.GetFilm(id).Adapt<FilmViewModel>(getTypeAdapterConfig());
-
 
         [HttpPost]
         public async Task<IResult> InsentFilm([FromBody] FilmViewModel filmVM)
