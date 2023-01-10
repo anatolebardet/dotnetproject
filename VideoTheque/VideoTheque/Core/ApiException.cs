@@ -4,9 +4,13 @@ namespace VideoTheque.Core
 {
     public class ApiException : Exception
     {
-        private int _httpStatusCode = (int)HttpStatusCode.InternalServerError;
+        protected int _httpStatusCode = (int)HttpStatusCode.InternalServerError;
         public ApiException() { }
-        public ApiException(string message) : base(message) { }
+
+        public ApiException(string message, int httpStatusCode) : base(message)
+        {
+            this._httpStatusCode = httpStatusCode;
+        }
 
         public int httpStatusCode
         {
@@ -16,22 +20,19 @@ namespace VideoTheque.Core
 
     public class NotFoundException : ApiException
     {
-        private int _httpStatusCode = (int)HttpStatusCode.NotFound;
-        public NotFoundException() { }
-        public NotFoundException(string message) : base(message) { }
+        public NotFoundException() : base("", (int)HttpStatusCode.NotFound) { }
+        public NotFoundException(string message) : base(message, (int)HttpStatusCode.NotFound) { }
     }
 
     public class InternalErrorException : ApiException
     {
-        private int _httpStatusCode = (int)HttpStatusCode.InternalServerError;
-        public InternalErrorException() { }
-        public InternalErrorException(string message) : base(message) { }
+        public InternalErrorException() : base("", (int)HttpStatusCode.InternalServerError) { }
+        public InternalErrorException(string message) : base(message, (int)HttpStatusCode.InternalServerError) { }
     }
 
     public class BadRequestException : ApiException
     {
-        private int _httpStatusCode = (int)HttpStatusCode.BadRequest;
-        public BadRequestException() { }
-        public BadRequestException(string message) : base(message) { }
+        public BadRequestException() : base("", (int)HttpStatusCode.BadRequest) { }
+        public BadRequestException(string message) : base(message, (int)HttpStatusCode.BadRequest) { }
     }
 }

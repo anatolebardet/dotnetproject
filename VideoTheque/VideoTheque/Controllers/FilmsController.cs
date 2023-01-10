@@ -26,6 +26,7 @@ namespace VideoTheque.Controllers
         [HttpGet("{id}")]
         public async Task<FilmViewModel> GetFilm([FromRoute] int id) => _filmsBusiness.GetFilm(id).Adapt<FilmViewModel>(getTypeAdapterConfig());
 
+
         [HttpPost]
         public async Task<IResult> InsentFilm([FromBody] FilmViewModel filmVM)
         {

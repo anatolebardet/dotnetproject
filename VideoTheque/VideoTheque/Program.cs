@@ -83,7 +83,11 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "VidéoThèque API V1");
     });
 }
-
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "VidéoThèque API V1");
+});
 app.UseRouting();
 
 //app.UseCors(builder => builder
