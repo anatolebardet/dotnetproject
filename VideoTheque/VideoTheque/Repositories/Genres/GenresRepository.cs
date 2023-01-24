@@ -49,5 +49,10 @@ namespace VideoTheque.Repositories.Genres
             _db.Genres.Remove(genreToDelete);
             return _db.SaveChangesAsync();
         }
+
+        public object GetOrCreate(object genre)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -49,5 +49,10 @@ namespace VideoTheque.Repositories.AgeRatings
             _db.AgeRatings.Remove(ageRatingToDelete);
             return _db.SaveChangesAsync();
         }
+
+        public object GetOrCreate(object ageRating)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

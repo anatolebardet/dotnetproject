@@ -25,5 +25,10 @@ namespace VideoTheque.Repositories.Supports
             var support = (SupportEnums)id;
             return new SupportDto(Id: (int)support, name: "BluRay");
         }
+
+        public object GetOrCreate(object support)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

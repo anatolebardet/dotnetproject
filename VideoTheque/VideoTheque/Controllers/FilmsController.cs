@@ -14,27 +14,25 @@ namespace VideoTheque.Controllers
 
         private readonly IFilmBusiness _filmsBusiness;
         protected readonly ILogger<FilmsController> _logger; 
-        private readonly HttpClient _httpClient;
-        private readonly IHostsRepository _hostRepository;
+        /*private readonly HttpClient _httpClient;
+        private readonly IHostsRepository _hostRepository;*/
 
-        public FilmsController(ILogger<FilmsController> logger, IFilmBusiness filmsBusiness, IHostsRepository hostRepository, HttpClient httpClient)
+        public FilmsController(ILogger<FilmsController> logger, IFilmBusiness filmsBusiness /*IHostsRepository hostRepository, HttpClient httpClient*/)
         {
             _logger = logger;
             _filmsBusiness = filmsBusiness; 
-            _hostRepository = hostRepository;
-            _httpClient = httpClient;
+           /* _hostRepository = hostRepository;
+            _httpClient = httpClient;*/
         }
 
-        [HttpGet("{idPartner}")]
+       /* [HttpGet("{idPartner}")]
         public async Task<IActionResult> GetAvailableFilms(int idPartner)
         {
             var host = await _hostRepository.GetHost(idPartner);
             var foreignFilms = await _httpClient.GetFromJsonAsync<List<FilmDto>>($"{host.Url}/api/emprunts");
             return Ok(foreignFilms);
-        }
-        
-
-
+        }*/
+     
         [HttpGet]
         public async Task<List<FilmViewModel>> GetFilms() => _filmsBusiness.GetFilms().Adapt<List<FilmViewModel>>(getTypeAdapterConfig());
 
@@ -42,7 +40,7 @@ namespace VideoTheque.Controllers
         public async Task<FilmViewModel> GetFilm([FromRoute] int id) => _filmsBusiness.GetFilm(id).Adapt<FilmViewModel>(getTypeAdapterConfig());
 
         [HttpPost]
-        public async Task<IResult> InsentFilm([FromBody] FilmViewModel filmVM)
+        public async Task<IResult> InsertFilm([FromBody] FilmViewModel filmVM)
         {
             var created = _filmsBusiness.InsertFilm(filmVM.Adapt<FilmDto>(getTypeAdapterConfig()));
             return Results.Created($"/films/{created.Id}", created);

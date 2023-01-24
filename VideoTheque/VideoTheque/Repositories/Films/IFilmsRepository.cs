@@ -14,6 +14,7 @@ namespace VideoTheque.Repositories.Films
         Task UpdateFilm(int id, BluRayDto bluRays);
 
         Task DeleteFilm(int id);
-
+        /*Task<BluRayDto> GetFilmByPartenaire(int idFilmPartenaire, int idPartenaire);
+        Task UpdateFilmPartenaire(int idFilmPartenaire, int idPartenaire, bool v);*/
     }
 }

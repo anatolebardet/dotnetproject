@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VideoTheque.Context;
 using VideoTheque.DTOs;
-using VideoTheque.Repositories.Genres;
 
 namespace VideoTheque.Repositories.Films
 {
@@ -57,5 +56,19 @@ namespace VideoTheque.Repositories.Films
             _db.BluRays.Remove(bluRayToDelete);
             return _db.SaveChangesAsync();
         }
+
+        /*public async Task<BluRayDto> GetFilmByPartenaire(int idFilmPartenaire, int idPartenaire)
+        {
+            // Query the data store to retrieve the film that matches the provided parameters
+            var film = await _db.BluRays.FirstOrDefaultAsync(f => f.Id == idFilmPartenaire && f.IdOwner == idPartenaire);
+
+            //return the result
+            return film;
+        }*/
+
+       /* public Task UpdateFilmPartenaire(int idFilmPartenaire, int idPartenaire, bool v)
+        {
+            throw new NotImplementedException();
+        }*/
     }
 }

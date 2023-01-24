@@ -14,5 +14,7 @@ namespace VideoTheque.Repositories.Personnes
         Task UpdatePersonne(int id, PersonneDto personne);
 
         Task DeletePersonne(int id);
-    }
+
+/*        Task GetOrCreate(PersonneDto personne);
+*/    }
 }

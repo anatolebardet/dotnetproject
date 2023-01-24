@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using VideoTheque.Context;
 using VideoTheque.DTOs;
 
@@ -49,5 +48,20 @@ namespace VideoTheque.Repositories.Personnes
             _db.Personnes.Remove(personneToDelete);
             return _db.SaveChangesAsync();
         }
+
+/*        public Task GetOrCreate(PersonneDto personne)
+        {
+            var existingPerson = _db.Personnes.FirstOrDefault(p => p.LastName == personne.LastName);
+            if (existingPerson != null)
+            {
+                _db.Personnes.FindAsync(existingPerson.Id);
+            }
+            else
+            {
+                _db.Personnes.AddAsync(personne);
+            }
+            return _db.SaveChangesAsync();
+        }*/
+
     }
 }

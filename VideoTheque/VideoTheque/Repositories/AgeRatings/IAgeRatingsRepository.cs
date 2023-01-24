@@ -14,5 +14,6 @@ namespace VideoTheque.Repositories.AgeRatings
         Task UpdateAgeRating(int id, AgeRatingDto ageRating);
 
         Task DeleteAgeRating(int id);
+        object GetOrCreate(object ageRating);
     }
 }

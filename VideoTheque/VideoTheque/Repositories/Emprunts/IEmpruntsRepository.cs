@@ -8,5 +8,6 @@ namespace VideoTheque.Repositories.Emprunts
         Task InsertEmprunt(BluRayDto bluRay);
         ValueTask<BluRayDto> GetEmprunt(int id);
         Task UpdateEmprunt(int id, BluRayDto bluRay);
+        Task AddEmprunt(int idFilmPartenaire, int idPartenaire);
     }
 }

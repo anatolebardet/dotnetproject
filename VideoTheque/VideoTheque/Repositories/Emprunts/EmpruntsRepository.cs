@@ -45,5 +45,9 @@ namespace VideoTheque.Repositories.Emprunts
             return _db.SaveChangesAsync();
         }
 
+        public Task AddEmprunt(int idFilmPartenaire, int idPartenaire)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

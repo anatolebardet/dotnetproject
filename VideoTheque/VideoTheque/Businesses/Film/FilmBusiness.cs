@@ -1,10 +1,6 @@
-﻿using System.Reflection;
-using VideoTheque.Businesses.BluRays;
-using VideoTheque.Constants;
-using VideoTheque.Core;
+﻿using VideoTheque.Core;
 using VideoTheque.DTOs;
 using VideoTheque.Repositories.AgeRatings;
-using VideoTheque.Repositories.BluRays;
 using VideoTheque.Repositories.Films;
 using VideoTheque.Repositories.Genres;
 using VideoTheque.Repositories.Personnes;
@@ -21,7 +17,7 @@ namespace VideoTheque.Businesses.Film
         private readonly ISupportsRepository _supportDao;
         private readonly IAgeRatingsRepository _ageRatingDao;
 
-        public FilmBusiness(IFilmsRepository bluRaysDao, IPersonnesRepository personnesDao, 
+        public FilmBusiness(IFilmsRepository bluRaysDao, IPersonnesRepository personnesDao,
             IGenresRepository genreDao, IAgeRatingsRepository ageRatingDao, ISupportsRepository supportDao)
         {
             _bluRayDao = bluRaysDao;
@@ -47,11 +43,11 @@ namespace VideoTheque.Businesses.Film
             {
                 bluray = _bluRayDao.GetFilm(id).Result;
             }
-            catch(System.NullReferenceException ex)
+            catch (System.NullReferenceException ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            if(bluray != null)
+            if (bluray != null)
             {
                 film = new FilmDto()
                 {
@@ -79,7 +75,7 @@ namespace VideoTheque.Businesses.Film
             List<FilmDto> films = new List<FilmDto>();
             List<BluRayDto> blurays = _bluRayDao.GetFilms().Result;
             PersonneDto _scenarist = new PersonneDto();
-            foreach(BluRayDto bluray in blurays)
+            foreach (BluRayDto bluray in blurays)
             {
                 if (_personneDao.GetPersonne((int)bluray.IdScenarist).Result != null)
                 {
@@ -148,9 +144,9 @@ namespace VideoTheque.Businesses.Film
         {
             List<PersonneDto> personnes = _personneDao.GetPersonnes().Result;
             PersonneDto personneReturn = new PersonneDto();
-            foreach(PersonneDto personne in personnes)
+            foreach (PersonneDto personne in personnes)
             {
-                if(personne.FirstName + " " + personne.LastName == name)
+                if (personne.FirstName + " " + personne.LastName == name)
                 {
                     personneReturn = personne;
                 }
@@ -185,10 +181,6 @@ namespace VideoTheque.Businesses.Film
             }
             return genreReturn;
         }
-
-        public List<FilmDto> GetAvailablePartnerFilms(int idPartner)
-        {
-            throw new NotImplementedException();
-        }
     }
-}
+   }
+
